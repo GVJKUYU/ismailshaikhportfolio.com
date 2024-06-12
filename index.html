@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio Website</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900;&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      :root{
+        color: #fff;
+        
+      }
+
+      html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+        background-image: url("5251283.jpg"); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;  
+      }
+
+      /* Add this media query to make the webpage responsive on smaller mobile phone screens */
+@media only screen and (max-width: 480px) {
+  /* Header and Navigation */
+ .header {
+    padding: 10px 0;
+  }
+ .logo {
+    width: 100px; /* Adjust logo size for small screens */
+    margin-right: 10px; /* Adjust margin for small screens */
+  }
+  nav {
+    flex-direction: column; /* Stack navigation items vertically */
+    align-items: center; /* Center align navigation items */
+  }
+  nav ul {
+    display: none; /* Hide navigation items by default */
+    width: 100%;
+    text-align: center;
+  }
+  nav ul.active {
+    display: flex; /* Show navigation items when active */
+    flex-direction: column;
+  }
+  nav ul li {
+    margin: 10px 0; /* Adjust margin for small screens */
+  }
+  #menu-icon {
+    display: block; /* Show menu icon on small screens */
+  }
+
+  /* Home Section */
+ .home {
+    flex-direction: column; /* Stack home content vertically */
+    align-items: center; /* Center align home content */
+  }
+ .home-content {
+    width: 100%; /* Make home content full width */
+  }
+ .home-img {
+    width: 100%; /* Make home image full width */
+  }
+ .home-img img {
+    width: 100%; /* Make home image full width */
+  }
+
+  /* About Section */
+  #about {
+    padding: 20px 0; /* Adjust padding for small screens */
+  }
+ .about-col-1 {
+    flex-basis: 100%; /* Make about column 1 full width */
+  }
+ .about-col-2 {
+    flex-basis: 100%; /* Make about column 2 full width */
+  }
+ .tab-titles {
+    flex-direction: column; /* Stack tab titles vertically */
+  }
+ .tab-links {
+    margin: 10px 0; /* Adjust margin for small screens */
+  }
+
+  /* Services Section */
+  #services {
+    padding: 20px 0; /* Adjust padding for small screens */
+  }
+ .services-list {
+    flex-direction: column; /* Stack services list vertically */
+  }
+ .services-list div {
+    width: 100%; /* Make services list items full width */
+  }
+
+  /* Portfolio Section */
+  #portfolio {
+    padding: 20px 0; /* Adjust padding for small screens */
+  }
+ .work-list {
+    flex-direction: column; /* Stack work list vertically */
+  }
+ .work {
+    width: 100%; /* Make work items full width */
+  }
+
+  /* Contact Section */
+  #contact {
+    padding: 20px 0; /* Adjust padding for small screens */
+  }
+ .contact-left {
+    flex-basis: 100%; /* Make contact left full width */
+  }
+ .contact-right {
+    flex-basis: 100%; /* Make contact right full width */
+  }
+ .social-icons {
+    flex-direction: column; /* Stack social icons vertically */
+  }
+ .social-icons a {
+    margin: 10px 0; /* Adjust margin for small screens */
+  }
+
+  /* Footer */
+ .footer {
+    padding: 10px 0; /* Adjust padding for small screens */
+  }
+ .footer-text {
+    text-align: center; /* Center align footer text */
+  }
+ .footer-iconTop {
+    text-align: center; /* Center align footer icon */
+  }
+}
+
+      .fade-in {
+  opacity: 0;
+  transition: opacity 5s; /* adjust the transition duration to your liking */
+}
+
+.fade-in-active {
+  opacity: 5;
+}
+
+      body {
+        background: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      .slide-in {
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-in-active {
+  transform: translateX(0);
+}
+
+      section{
+        min-height: 100vh;
+        padding: 10rem 9% 2rem;
+      }
+
+      #header{
+      width: 100%;
+      height: 100vh;
+      background-image: url(neww.png);
+      background-size: cover;
+      background-position: center;
+     } 
+
+     .container{
+      padding: 10px 10%;
+     }
+
+     nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+     }
+    .logo{
+      width: 295px;
+      margin-right: 160px;
+      align-items: left;
+    }
+
+     nav ul li{
+      display: inline-block;
+      list-style-type: none;
+      margin: 10px 20px;
+     }
+
+     nav ul li a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 27px;
+      position: relative;
+    }
+    nav ul li a::after{
+      content: '';
+      width: 0%;
+      height: 3px;
+      background: #3c00ff;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      transition: 0.5s;
+    }
+    nav ul li a:hover::after, 
+    nav ul li a.active{
+      width: 100%;
+      color:  #cfcfcf;
+    }
+
+    #menu-icon{
+      font-size: 3.6rem;
+      color: var(--text-color);
+      display: none;
+    }
+
+    #home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0vh; /* Adjust this value as needed */
+}
+
+.home {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s, transform 1s;
+}
+
+.home.slide-in-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+    .home{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-img img{
+      width: 130%;
+      padding-right: 90px;
+      padding-top: 0%;
+      
+    }
+
+    .home-content h3{
+      font-size: 4.2rem;
+      font-weight: 700;
+    }
+
+    .home-content h3:nth-of-type(2){
+      margin-bottom: 2rem;
+    }
+
+    span{
+      color: lightgray;
+    }
+
+    .btn-2 {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      background:  #3c00ff;
+      border-radius: 4rem;
+      box-shadow: #006aff;
+      font-size: 1.6rem;
+      color: #fff;
+      letter-spacing: .1rem;
+      font-weight: 600;
+      transition: .5s ease;
+    }
+
+    .btn-2:hover{
+      box-shadow: none;
+    }
+
+    .home-content h1{
+      font-size: 6.6rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .home-content p{
+      font-size: 1.6rem;
+    }
+
+    .social-media a { 
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 4rem;
+      height: 4rem;
+      background: transparent;
+      border: #fff;
+      border-radius: 50%;
+      font-size: 2rem;
+      color: #ffffff;
+      margin: 3rem 1.5rem 3rem 0;
+      transition: .5s ease;
+    }
+    
+    .social-media a:hover {
+      background: #ffffff;
+      color: #006aff;
+      box-shadow: 0 0 1rem var(--main-color);
+    }
+
+      
+      /*----------- about --------*/
+      #about{
+        padding: 0px 0;
+        color:#fff ;
+      }
+
+      .about {
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+
+.about.slide-in-active {
+  transform: scale(1);
+  opacity: 1;
+}
+      .row{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .about-col-1{
+        flex-basis: 35%;
+      }
+      .about-col-1 img{
+        width: 65%;
+        border-radius: 10px;
+      }
+      .about-col-2{
+        padding-top: 6.9%;
+        padding-right: 7%;
+        flex-basis: 60%;
+      }
+      .sub-title{
+        padding-right: 5%;
+        font-size: 60px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .para{
+        padding-right: 300px;
+        font-size: 180%;
+      }
+
+      .tab-titles{
+          display: flex;
+          margin: 20px 0 40px;
+      }
+      .tab-links{
+        margin-right: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+      }
+      .tab-links::after{
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #006aff;
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        transition: 0.5s;
+      }
+
+      .tab-links.active-link::after{
+        width: 50%;
+      }
+
+      .tab-contents ul li{
+        list-style: none;
+        margin: 10px 0;
+      }
+      .tab-contents ul li span{
+        color: #006aff;
+        font-size: 19px;
+      }
+
+      .tab-contents{
+        display: none;
+        font-size: large;
+      }
+
+      .tab-contents.active-tab{
+        display: block;
+      }
+     /**--------- services --------*/
+
+     #services{
+      padding: 30px 0;
+     }
+     .services {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+
+.services.slide-in-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+    .services-list{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 40px;
+      margin-top: 50px;
+    }
+
+    .services-list div{
+        background: #262626;
+        padding: 40px;
+        font-size: 13px;
+        font-weight: 300;
+        border-radius: 10px;
+        transition: background 0.5s, transform 0.5s;
+    }
+
+    .services-list div i{
+      font-size: 50px;
+      margin-bottom: 30px;
+    } 
+    
+    .services-list div h2{
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .services-list div a{
+      text-decoration: none;
+      color: #fff;
+      font-size: 12px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .services-list div:hover{
+      background: #006aff;
+      transform: translateY(-10px);
+    }
+
+    /* -------- My  WORKS ---------*/
+   #portfolio{
+    padding: 50px 0;
+   }
+
+   .portfolio {
+  transform: rotateY(90deg);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+
+.portfolio.slide-in-active {
+  transform: rotateY(0);
+  opacity: 1;
+}
+
+   .work-list{
+    display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 40px;
+      margin-top: 50px;
+   }
+
+  .work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .layer{
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(rgba(0,0,0,0.6),#006aff);
+    border-radius: 10px;
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+  }
+
+  .layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .layer a{
+    margin-top: 20px;
+    color: #000dff;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  .work:hover img{
+    transform: scale(1.1);
+  }
+  .work:hover .layer{
+    height: 100%;
+  }
+
+  .btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #006aff;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s;
+  }
+  .btn:hover{
+    background: #006aff;
+  }
+
+  /*--------- contact ----------*/
+
+  .contact {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+
+.contact.slide-in-active {
+  transform: translateY(0);
+  opacity: 1;
+}
+  .contact-left{
+    flex-basis: 35%;
+  }
+
+  .contact-right{
+    flex-basis: 60%;
+  }
+
+  .contact-left p{
+    margin-top: 30px;
+  }
+
+  .contact-left p i{
+    color: #006aff;
+    margin-right: 15px;
+    font-size: 25px;
+  }
+
+  .social-icons{
+    margin-top: 30px;
+  }
+  .social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+  }
+
+  .social-icons a:hover{
+    color: #006aff;
+    transform: translateY(-5px);
+  }
+
+  .btn.btn2{
+    display: inline-block;
+    background: #006aff;
+  }
+
+  .contact-right form{
+    width: 100%;
+  }
+  form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+  form .btn2{
+    padding: 14px 60px;
+    font-size: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+  }
+
+  .footer-text p{
+     font-size: 1.6rem;
+  }
+
+  .footer-iconTop a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: #fff;
+    border-radius: .8rem;
+  }
+
+  .footer-iconTop a i{
+    font-size: 2.4rem;
+    color: #006aff;
+  }
+  @media only screen and (max-width: 600px) {
+    .logo {
+    width: 150px; /* Adjust logo size for small screens */
+    margin-right: 10px; /* Adjust margin for small screens */
+  }
+
+  nav {
+    flex-direction: column; /* Stack navigation items vertically */
+    align-items: center; /* Center align navigation items */
+  }
+
+  nav ul li {
+    margin: 10px 0; /* Adjust margin for small screens */
+  }
+
+  #menu-icon {
+    display: block; /* Show menu icon on small screens */
+  }
+
+  nav ul {
+    display: none; /* Hide navigation items by default */
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul.active {
+    display: flex; /* Show navigation items when active */
+    flex-direction: column;
+
+}
+  }
+
+    </style>
+    <script src="https://kit.fontawesome.com/261f309f5a.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+ <div class="header">
+    <div class="container">
+      <box-icon name='menu' id="menu-icon"></box-icon>
+     <nav>
+      <img src="logo.png" class="logo">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+     </nav>
+    </div>
+  </div>
+  <section class="home" id="home">
+    <div class="home-content">
+      <h3>Hello, It's Me</h3>
+      <h1>Ismail Shaikh</h1>
+      <h3>And I'm a <span class="auto-type"></span></h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quisquam ullam sint 
+        dignissimos, fugiat 
+           provident animi tenetur ipsum ipsam officia quod minima </p>
+           <div class="social-media">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+           </div>
+          <a href="#" class="btn-2">Download CV</a>
+    </div>
+
+    <div class="home-img">
+      <img src="MYNEWW.png" alt="">
+    </div>
+  </section>
+</section>
+
+
+      <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+        <img src="FINAL.jpg.png">
+        </div>
+        <div class="about-col-2">
+      <h2 class="sub-title">About Me</h2>
+      <p class="para">Hi, I'm Ismail Shaikh, a passionate web developer with expertise in creating dynamic 
+        and responsive websites.
+         I specialize in front-end development and have a strong foundation in HTML, CSS, and JavaScript.
+         My goal is to build user-friendly and efficient web solutions.</p>
+         <div class="tab-titles">
+          <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+          <p class="tab-links" onclick="opentab('experience')">Experience</p>
+          <p class="tab-links"  onclick="opentab('education')">Education</p>
+         </div>
+        <div class="tab-contents active-tab" id="skills">
+          <ul>
+            <li><span>UI&UX</span><br>Desigining Web/App interfaces</li>
+            <li><span>Web Development</span><br>Web App Development</li>
+            <li><span>App Development</span><br>Building Android/IOS apps</li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="experience">
+          <ul>
+            <li><span>2024 - Current</span><br>Finding Job and Intership At various Companies</li>
+            <li><span>2023 - 2024</span><br>Iternship at Infinyt3D As a Website and Marketing mangaging team</li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="education">
+          <ul>
+            <li><span>2014-2021</span><br> Completed 5 to 10 th Standard From Holy Spirit Institute</li>
+            <li><span>2021-2024</span><br>Completed 3 years Diploma In Computer Engineering</li>
+          </ul>
+        </div>
+        </div>
+        </div>
+    </div>
+      </div>
+
+   <!---------services------------------->
+    <div id="services">
+      <div class="container">
+        <h2 class="sub-title">My Services</h2>
+        <div class="services-list">
+         <div>
+          <i class="fa-solid fa-code"></i>
+          <h2>Web Design</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, rem quae quo eos repudiandae consequuntur quam fuga ratione non voluptate eligendi adipisci reiciendis.
+             Id accusamus ipsum assumenda corrupti voluptatum adipisci.</p>
+             <a href="#">Learn More</a>
+         </div>
+         <div>
+          <i class="fa-solid fa-crop-simple"></i>
+          <h2>UI Design</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, rem quae quo eos repudiandae consequuntur quam fuga ratione non voluptate eligendi adipisci reiciendis.
+             Id accusamus ipsum assumenda corrupti voluptatum adipisci.</p>
+             <a href="#">Learn More</a>
+         </div>
+         <div>
+          <i class="fa-brands fa-app-store"></i>
+          <h2>App Design</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, rem quae quo eos repudiandae consequuntur quam fuga ratione non voluptate eligendi adipisci reiciendis.
+             Id accusamus ipsum assumenda corrupti voluptatum adipisci.</p>
+             <a href="#">Learn More</a>
+         </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!---------my works------------------->
+    <div id="portfolio">
+      <div class="container">
+        <h2 class="sub-title">My Work</h2>
+        <div class="work-list">
+          <div class="work">
+            <img src="work-1.png">
+            <div class="layer">
+              <h3>Social Medis App</h3>
+              <p>The app connects to the talented people on the world around the world.
+                Download it from play store</p>
+                <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="work-2.png">
+            <div class="layer">
+              <h3>Music App</h3>
+              <p>The app connects to the talented people on the world around the world.
+                Download it from play store</p>
+                <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="work-3.png">
+            <div class="layer">
+              <h3>Online Shopping App</h3>
+              <p>The app connects to the talented people on the world around the world.
+                Download it from play store</p>
+                <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">See more</a>
+      </div>
+      </div>
+    </div>
+
+    <!---------Contact Me------------------->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i> ismailshaikhshaikh920@gmail.com</p>
+            <p><i class="fa-solid fa-square-phone"></i>9370787063</p>
+            <div class="social-icons">
+              <a href="https://facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://twitter.com/"><i class="fa-brands fa-twitter-square"></i></a>
+              <a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <a href="C:\Users\Ismail\Desktop\NEW WEBSITE BY MY SELF\my-cv.pdf" download class="btn btn2">Download CV</a>
+          </div>
+          <div class="contact-right">
+            <form>
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="E-mail" placeholder="Your E-mail" required>
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--- FOOTER DESIGN-->
+      <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright © Ismail. Made with <i class="fa-solid fa-heart"></i> by Ismail Shaikh</p>
+        </div>
+
+        <div class="footer-iconTop">
+          <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+         </footer>
+    </div>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.0.12"></script>
+    <script>
+      ScrollReveal().reveal(".fade-in", {
+        delay: 200,
+        distance: "50px",
+        origin: "bottom",
+        easing: "ease-in-out",
+        interval: 100,
+      });
+
+      var typed = new Typed(".auto-type", {
+        strings: ["Web Developer", "App Developer", "UI Designer"],
+        typeSpeed: 174,
+        backSpeed: 170,
+        loop: true,
+      });
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+          for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+          }
+          for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+          }
+          event.currentTarget.classList.add("active-link")
+          document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        const sections = document.querySelectorAll('section');
+
+function checkAnimation() {
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      section.classList.add('slide-in-active');
+    } else {
+      section.classList.remove('slide-in-active');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkAnimation);
+window.addEventListener('resize', checkAnimation);
+
+checkAnimation(); // Trigger animation check on page load
+
+document.getElementById('menu-icon').addEventListener('click', function() {
+  var nav = document.querySelector('nav ul');
+  nav.classList.toggle('active');
+});
+
+
+       
+      </script>
+  </body>
+</html>
+
